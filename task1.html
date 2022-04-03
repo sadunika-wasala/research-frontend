@@ -5,6 +5,7 @@
 	<title>Test Game</title>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 	<script src="webgazer_calib.js" type="text/javascript"></script>
 	<style type="text/css">
 		body {
@@ -19,31 +20,38 @@
 </head>
 
 <body style="margin: 0px; overflow: hidden;">
-	<img id="ch" class="slide" style="display: none;" src="finalTask/CHR.png">
-	<img id="s1" class="slide" style="display: none;" src="finalTask/F1.png">
-	<img id="s2" class="slide" style="display: none;" src="finalTask/F2.png">
-	<img id="s3" class="slide" style="display: none;" src="finalTask/gif1.gif">
-	<img id="s4" class="slide" style="display: none;" src="finalTask/F3.png">
-	<img id="s5" class="slide" style="display: none;" src="finalTask/gif2.gif">
-	<img id="s6" class="slide" style="display: none;" src="finalTask/F4R.png">
-	<img id="s7" class="slide" style="display: none;" src="finalTask/F5R.png">
-	<img id="s8" class="slide" style="display: none;" src="finalTask/F6R.png">
-	<img id="s9" class="slide" style="display: none;" src="finalTask/F7R.png">
-	<img id="s10" class="slide" style="display: none;" src="finalTask/F8R.png">
-	<img id="s11" class="slide" style="display: none;" src="finalTask/F9R.png">
-	<img id="s12" class="slide" style="display: none;" src="finalTask/F10R.png">
-	<img id="s13" class="slide" style="display: none;" src="finalTask/F11R.png">
-	<img id="s14" class="slide" style="display: none;" src="finalTask/F12R.png">
-	<img id="s15" class="slide" style="display: none;" src="finalTask/F13R.png">
-	<img id="s16" class="slide" style="display: none;" src="finalTask/F14R.png">
-	<img id="s17" class="slide" style="display: none;" src="finalTask/F15R.png">
-	<img id="s18" class="slide" style="display: none;" src="finalTask/F16R.png">
-	<img id="s19" class="slide" style="display: none;" src="finalTask/F17R.png">
+	<img id="ch" class="slide" style="display: none;" src="images/task1/CHR.png">
+	<img id="s1" class="slide" style="display: none;" src="images/task1/F1.png">
+	<img id="s2" class="slide" style="display: none;" src="images/task1/F2.png">
+	<img id="s3" class="slide" style="display: none;" src="images/task1/gif1.gif">
+	<img id="s4" class="slide" style="display: none;" src="images/task1/F3.png">
+	<img id="s5" class="slide" style="display: none;" src="images/task1/gif2.gif">
+	<img id="s6" class="slide" style="display: none;" src="images/task1/F4R.png">
+	<img id="s7" class="slide" style="display: none;" src="images/task1/F5R.png">
+	<img id="s8" class="slide" style="display: none;" src="images/task1/F6R.png">
+	<img id="s9" class="slide" style="display: none;" src="images/task1/F7R.png">
+	<img id="s10" class="slide" style="display: none;" src="images/task1/F8R.png">
+	<img id="s11" class="slide" style="display: none;" src="images/task1/F9R.png">
+	<img id="s12" class="slide" style="display: none;" src="images/task1/F10R.png">
+	<img id="s13" class="slide" style="display: none;" src="images/task1/F11R.png">
+	<img id="s14" class="slide" style="display: none;" src="images/task1/F12R.png">
+	<img id="s15" class="slide" style="display: none;" src="images/task1/F13R.png">
+	<img id="s16" class="slide" style="display: none;" src="images/task1/F14R.png">
+	<img id="s17" class="slide" style="display: none;" src="images/task1/F15R.png">
+	<img id="s18" class="slide" style="display: none;" src="images/task1/F16R.png">
+	<img id="s19" class="slide" style="display: none;" src="images/task1/F17R.png">
 
-	<img id="result" class="slide" style="display: none;" src="finalTask/result.png">
+	<img id="result" class="slide" style="display: none;" src="images/task1/result.png">
+
+    <div id="resultChart" style="display: none; position: absolute;" >
+        <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+
 	<!-- <p id="objectName" style="position: absolute; top:500px; left: 500px;">Object name</p> -->
 
 	<script type="text/javascript">
+
+        sessionStorage.setItem("task_name", "task1");
 
 		boundaryArr = {
 			"s1": {
@@ -1680,6 +1688,8 @@
 					}
 
 				}
+                showResults();
+                sendGazeDataToBackend(arr, percentArr);
 
 
 
@@ -1703,6 +1713,81 @@
 			increment += 1;
 
 		}
+
+        // send Gaze Data To Backend
+        function sendGazeDataToBackend(dataArr, percentArray, user, task) {
+            //ajax
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/results",
+                data: {
+                    "user": sessionStorage.getItem("user_name"),
+                    "task": sessionStorage.getItem("task_name"),
+                    "dataArr": dataArr,
+                    "percentArray": percentArray
+                },
+                success: function (data) {
+
+                    // Ajax call completed successfully
+                    alert("Form Submited Successfully");
+                    // window.location.href = "selection.html"
+                },
+                error: function (data) {
+
+                    // Some error in ajax call
+                    alert("some Error");
+                }
+            });
+        }
+
+        function showResults() {
+
+            var dynamicColors = function() {
+                var r = Math.floor(Math.random() * 255);
+                var g = Math.floor(Math.random() * 255);
+                var b = Math.floor(Math.random() * 255);
+                return "rgb(" + r + "," + g + "," + b + ")";
+            };
+
+            var labelsArr = Object.getOwnPropertyNames(percentArr["s4"])
+            var valuesArr = [];
+            var colorArr = [];
+            labelsArr.forEach((label)=>{
+                valuesArr.push(percentArr["s4"][label]);
+                colorArr.push(dynamicColors());
+            })
+
+            const data = {
+                labels: labelsArr,
+                datasets: [
+                    {
+                        label: 'Slide 4',
+                        data: valuesArr,
+                        backgroundColor: colorArr,
+                    }
+                ]
+            };
+
+            const config = {
+                type: 'pie',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Results'
+                    }
+                    }
+                },
+            };
+
+            const myChart = new Chart(document.getElementById('myChart'), config);
+            $("#resultChart").show();
+        }
 
 	</script>
 </body>

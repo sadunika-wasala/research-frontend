@@ -59,8 +59,8 @@
                     "gender": $("input[name='gender']:checked").val()
                 },
                 success: function (data) {
-
                     // Ajax call completed successfully
+                    sessionStorage.setItem("user_name",$("#cname").val());
                     alert("Form Submited Successfully");
                     window.location.href = "selection.html"
                 },
