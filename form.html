@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <title>Details Form</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <!--Include JQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"> </script>
+
+
+
+</header>
+
+<body>
+    <div class="main">
+        <div class="register">
+            <h2>මෙහි තොරතුරු අතුලත් කරන්න</h2>
+            <form id="register">
+                <label><b>පරීශීලක නාමය :</b></label>
+                <br>
+                <input type="text" name="cname" id="cname" placeholder="මිනායා නෙත්සරණි">
+                <br><br>
+
+                <label><b>දරුවාගේ වයස :</b></label>
+                <br>
+                <input type="number" name="age" id="age" placeholder="4" required>
+                <br><br>
+
+                <label><b>දරුවාගේ ස්ත්‍රී පුරුෂ භාවය :</b></label>
+                <br>
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="gender" id="female" value="female" required>
+                &nbsp;
+                <label for="female">ගැහැණු</label>
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="gender" id="male" value="male" required>
+                &nbsp;
+                <label for="male">පිරිමි</label>
+                <br><br>
+
+                <input type="button" value="තහවුරු කරන්න" name="submit" id="submit">
+            </form>
+
+        </div>
+        <!--end register-->
+    </div>
+    <!--end main-->
+
+    <script>
+
+        $("#submit").click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/register",
+                data: {
+                    "cname": $("#cname").val(),
+                    "age": $("#age").val(),
+                    "gender": $("input[name='gender']:checked").val()
+                },
+                success: function (data) {
+
+                    // Ajax call completed successfully
+                    alert("Form Submited Successfully");
+                    window.location.href = "selection.html"
+                },
+                error: function (data) {
+
+                    // Some error in ajax call
+                    alert("some Error");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

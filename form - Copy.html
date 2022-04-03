@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<header>
+    <title>Details Form</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+
+    <!--Include JQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"> </script>
+
+
+
+</header>
+
+<body>
+    <div class="main">
+        <div class="register">
+            <h2>මෙහි තොරතුරු අතුලත් කරන්න</h2>
+            <form id="register">
+                <label><b>දරුවාගේ නම :</b></label>
+                <br>
+                <input type="text" name="cname" id="cname" placeholder="මිනායා නෙත්සරණි">
+                <br><br>
+                <!-- <label><b>භාරකරුගේ නම :</b></label>
+<br>
+<input type="text" name="pname" id="pname" placeholder="අසේල රත්නායක">
+<br><br> -->
+                <label><b>දරුවාගේ වයස :</b></label>
+                <br>
+                <input type="number" name="age" id="age" placeholder="4" required>
+                <br><br>
+                <!-- <label><b>භාරකරුගේ දුරකථන අංකය  :</b></label>
+<br>
+<input type="Phone" name="number" id="number" placeholder="0774523116 ">
+<br><br> -->
+                <!-- <label><b>භාරකරුගේ ඊතැපැල් ලිපිනය :<b></label> -->
+                <!-- <br> -->
+                <!-- <input type="Email" name="name" id="name" placeholder="asela@gmail.com"> -->
+                <!-- <br><br> -->
+                <!-- <label for="myfile">තහවුරු කල වාර්තාවක් ඇත්නම් උඩුගත කරන්න :</label>
+<br>
+<input type="file" id="myfile" name="myfile">
+<br><br> -->
+                <label><b>දරුවාගේ ස්ත්‍රී පුරුෂ භාවය :</b></label>
+                <br>
+                &nbsp;&nbsp;&nbsp;
+                <input type="radio" name="gender" id="female" required>
+                &nbsp;
+                <label for="female">ගැහැණු</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="gender" id="male">
+                    &nbsp;
+                    <label for="male">පිරිමි</span>
+                        <br><br>
+                        <!-- <label><b>භාෂාව :</b></label>
+<br>
+&nbsp;&nbsp;&nbsp;
+<input type="checkbox" name="lang" id="Sinhala" >
+&nbsp;
+<span id="sinhala">සිංහල</span>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="checkbox" name="lang" id="english">
+&nbsp;
+<span id="english">ඉංග්‍රීසි</span>
+<br><br> -->
+
+                        <!-- <input type="submit" value="තහවුරු කරන්න" name="submit" id="submit"
+                    onclick="location.href='selection.html'"> -->
+
+                        <input type="button" value="තහවුරු කරන්න" name="submit" id="submit">
+                        <!-- <button id="xx">තහවුරු karapiya</button> -->
+            </form>
+
+        </div>
+        <!--end register-->
+    </div>
+    <!--end main-->
+
+    <script>
+
+        // When DOM is loaded this 
+        // function will get executed
+        // $(() => {
+        //     // function will get executed 
+        //     // on click of submit button
+        //     $("#submit").click(function (ev) {
+        //         var form = $("#register");
+        //         var url = form.attr('action');
+        //         $.ajax({
+        //             type: "POST",
+        //             url: url,
+        //             data: form.serialize(),
+        //             success: function (data) {
+
+        //                 // Ajax call completed successfully
+        //                 alert("Form Submited Successfully");
+        //             },
+        //             error: function (data) {
+
+        //                 // Some error in ajax call
+        //                 alert("some Error");
+        //             }
+        //         });
+        //     });
+        // });
+        $("#submit").click(function (e) {
+            e.preventDefault();
+            console.log("KASUNI MODI")
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:3000/register",
+                data: {
+                    "cname": $("#cname").val(),
+                    "age": $("#age").val(),
+                    "gender": $("#gender").val()
+                },
+                success: function (data) {
+
+                    // Ajax call completed successfully
+                    alert("Form Submited Successfully");
+                },
+                error: function (data) {
+
+                    // Some error in ajax call
+                    alert("some Error");
+                }
+            });
+        });
+
+        $("#xx").on("click", function (e) {
+            console.log("KASUNI MODI2")
+            e.preventDefault();
+        });
+    </script>
+</body>
+
+</html>
