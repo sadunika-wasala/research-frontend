@@ -18,6 +18,7 @@
 			height: 130px;
 			position: absolute;
 		}
+
 		.dropdown {
 			position: absolute;
 			display: none;
@@ -60,6 +61,11 @@
 </head>
 
 <body style="margin: 0px; overflow: hidden;">
+
+	<audio autoplay>
+		<source src="audio/background.mp3" type="audio/mpeg">
+	</audio>
+
 	<img id="ch" class="slide" style="display: none;" src="images/task1/CHR.png">
 	<img id="s1" class="slide" style="display: none;" src="images/task1/F1.png">
 	<img id="s2" class="slide" style="display: none;" src="images/task1/F2.png">
@@ -113,7 +119,7 @@
 			<a href="#">Slide 19</a>
 		</div>
 	</div> -->
-	<div >
+	<div>
 		<select id="slideList" class="dropdown" onchange="slideChange()">
 			<option value="none" selected disabled hidden>Select a Slide</option>
 			<option value="1">Slide 1</option>
@@ -894,7 +900,7 @@
 		//pause variable(use to store the stste of game)
 		var isPaused = false;
 		var isGameOver = false;
-		var a 
+		var a
 		var started = false;
 		var taskLoop;
 
@@ -903,7 +909,7 @@
 				return;
 			}
 
-			if(!started){
+			if (!started) {
 				showSlide();
 				taskLoop = setInterval(showSlide, 7000);
 				started = true;
@@ -1743,7 +1749,7 @@
 
 		// var type = "s";
 		var increment = 1;
-		
+
 
 		//function for pause game
 		document.addEventListener('keyup', function (e) {
@@ -1883,11 +1889,11 @@
 				var r = Math.floor(Math.random() * 255);
 				var g = Math.floor(Math.random() * 255);
 				var b = Math.floor(Math.random() * 255);
-				
+
 				return "rgb(" + r + "," + g + "," + b + ")";
-				
+
 			};
-			var slidename = "s" +a;
+			var slidename = "s" + a;
 
 			var labelsArr = Object.getOwnPropertyNames(percentArr[slidename]);
 			var valuesArr = [];
@@ -1925,7 +1931,7 @@
 					}
 				},
 			};
-			if(myChart){
+			if (myChart) {
 				console.log("AFASFASFASFASFASFSAFSAAFAFASFSAFASFDFAFA");
 				myChart.destroy();
 			}
