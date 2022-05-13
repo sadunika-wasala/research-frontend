@@ -33,17 +33,10 @@ h1{
 	text-align:center;
 	padding:20px;
 	font-family:sans-serif;
-	font-size: 34px;
-	color:#ffff 
+	font-size: 60px;
+	color:black
 }
-h3{
-	
-	text-align:center;
-	padding:20px;
-	font-family:sans-serif;
-	font-size: 20px;
-	color:#ffff 
-}
+
 input#submit{
 	text-align: center;
 	width:300px;
