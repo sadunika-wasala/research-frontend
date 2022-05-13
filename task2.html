@@ -18,7 +18,6 @@
 			height: 130px;
 			position: absolute;
 		}
-
 		.dropdown {
 			position: absolute;
 			display: none;
@@ -61,9 +60,8 @@
 </head>
 
 <body style="margin: 0px; overflow: hidden;">
-
-	<audio autoplay>
-		<source src="audio/background.mp3" type="audio/mpeg">
+	<audio id="backgroundsound" autoplay loop src="audio/background.mp3">
+		<!-- <source src="audio/background.mp3" type="audio/mpeg"> -->
 	</audio>
 
 	<img id="ch" class="slide" style="display: none;" src="images/task1/CHR.png">
@@ -95,31 +93,8 @@
 	</div>
 
 	<!-- dropdown -->
-	<!-- <div class="dropdown">
-		<button class="dropbtn">Dropdown</button>
-		<div class="dropdown-content">
-			<a href="#">Slide 1</a>
-			<a href="#">Slide 2</a>
-			<a href="#">Slide 3</a>
-			<a href="#">Slide 4</a>
-			<a href="#">Slide 5</a>
-			<a href="#">Slide 6</a>
-			<a href="#">Slide 7</a>
-			<a href="#">Slide 8</a>
-			<a href="#">Slide 9</a>
-			<a href="#">Slide 10</a>
-			<a href="#">Slide 11</a>
-			<a href="#">Slide 12</a>
-			<a href="#">Slide 13</a>
-			<a href="#">Slide 14</a>
-			<a href="#">Slide 15</a>
-			<a href="#">Slide 16</a>
-			<a href="#">Slide 17</a>
-			<a href="#">Slide 18</a>
-			<a href="#">Slide 19</a>
-		</div>
-	</div> -->
-	<div>
+
+	<div >
 		<select id="slideList" class="dropdown" onchange="slideChange()">
 			<option value="none" selected disabled hidden>Select a Slide</option>
 			<option value="1">Slide 1</option>
@@ -898,18 +873,18 @@
 		var slideID = null;
 		var slide = "ch";
 		//pause variable(use to store the stste of game)
-		var isPaused = false;
 		var isGameOver = false;
-		var a
+		var a 
 		var started = false;
 		var taskLoop;
+		var taskPaused = false;
 
 		webgazer.setGazeListener(function (data, elapsedTime) {
 			if (data == null) {
 				return;
 			}
 
-			if (!started) {
+			if(!started){
 				showSlide();
 				taskLoop = setInterval(showSlide, 7000);
 				started = true;
@@ -1749,20 +1724,90 @@
 
 		// var type = "s";
 		var increment = 1;
-
+		
 
 		//function for pause game
 		document.addEventListener('keyup', function (e) {
 			//32 is space bar button ASCII value
-			console.log("e.which");
-			console.log(e.which);
-			console.log("/e.which");
-			alert("Game is paused");
-			if (e.which === 32 && isGameOver == false) {
-				//if(isPaused) resumeGame();
-				//else pasuseGame();
+			if(slide=="ch"){
+				if (e.which === 32) {
+					if(!taskPaused){
+						pauseTask();
+					}else{
+						resumeTask();
+					}
+					// alert("Game is paused");
+				}else if (e.which === 13 && taskPaused) {
+					stopTask();
+				}
 			}
 		});
+
+		function pauseTask(){
+			if(!taskPaused){
+				console.log("puased");
+				clearInterval(taskLoop);
+				clearTimeout(tempT)
+				webgazer.pause();
+				taskPaused = true;
+			}
+		}
+
+		function resumeTask(){
+			if(taskPaused){
+				console.log("resumed");
+				taskLoop = setInterval(showSlide, 7000);
+				webgazer.resume();
+				taskPaused = false;
+			}
+		}
+
+		function stopTask(){
+			console.log("stoped");
+
+			$(".slide").hide();
+			$("#result").show();
+			$("#slideList").show();
+			slide = "result";
+			clearInterval(taskLoop);
+
+			$("#objectName").text("none")
+			webgazer.pause();
+
+			//calculate object percentages for each slide
+			calculatePercentArray(arr, percentArr);
+			
+			//showResults(a);
+			sendGazeDataToBackend(arr, percentArr);
+
+		}
+
+		function calculatePercentArray(arr, percentArr){
+			for (let slide in arr) {
+
+				OList = arr[slide].map((x) => {
+					return x.bb
+				})
+
+				const count = {};
+
+				for (const element of OList) {
+					if (count[element]) {
+						count[element] += 1;
+					} else {
+						count[element] = 1;
+					}
+				}
+
+				var tot = OList.length
+
+				percentArr[slide] = {}
+				for (let name in count) {
+					percentArr[slide][name] = 100 * count[name] / tot
+				}
+
+			}
+		}
 
 		// function pasuseGame(){
 		// 	clearInterval(interval);
@@ -1793,70 +1838,32 @@
 
 
 		// }
+		var tempT;
 
 		function showSlide() {
-			if (increment >= 20) {
+			if (increment >= 20) { //end of slides
+
+				stopTask();
+				
+			}else{
+
 				$(".slide").hide();
-				$("#result").show();
-				$("#slideList").show();
-				slide = "result";
-				clearInterval(taskLoop);
 
+				slideID = "#s" + parseInt(increment);
+				$("#ch").show();
 				$("#objectName").text("none")
-				webgazer.pause();
+				slide = "ch";
+				tempT = setTimeout(function () {
+					$("#ch").hide();
+					$(slideID).show();
+					slide = slideID.substr(1); //remove the # in the begining
+					console.log("slideID: " + slideID);
+					console.log("increment: " + increment);
+				}, 5000);
 
-				//calculate object percentages for each slide
-
-				for (let slide in arr) {
-
-					OList = arr[slide].map((x) => {
-						return x.bb
-					})
-
-					const count = {};
-
-					for (const element of OList) {
-						if (count[element]) {
-							count[element] += 1;
-						} else {
-							count[element] = 1;
-						}
-					}
-
-					var tot = OList.length
-
-					percentArr[slide] = {}
-					for (let name in count) {
-						percentArr[slide][name] = 100 * count[name] / tot
-					}
-
-				}
-				//showResults(a);
-				sendGazeDataToBackend(arr, percentArr);
-
-
-
-				return;
+				increment += 1;
 			}
-
-			$(".slide").hide();
-
-			slideID = "#s" + parseInt(increment);
-			$("#ch").show();
-			$("#objectName").text("none")
-			slide = "ch";
-			setTimeout(function () {
-				$("#ch").hide();
-				$(slideID).show();
-				slide = slideID.substr(1); //remove the # in the begining
-				console.log("slideID: " + slideID);
-				console.log("increment: " + increment);
-			}, 2000);
-
-			increment += 1;
-
 		}
-
 		// send Gaze Data To Backend
 		function sendGazeDataToBackend(dataArr, percentArray, user, task) {
 			//ajax
@@ -1882,6 +1889,7 @@
 				}
 			});
 		}
+
 		var myChart;
 		function showResults(a) {
 
@@ -1889,11 +1897,11 @@
 				var r = Math.floor(Math.random() * 255);
 				var g = Math.floor(Math.random() * 255);
 				var b = Math.floor(Math.random() * 255);
-
+				
 				return "rgb(" + r + "," + g + "," + b + ")";
-
+				
 			};
-			var slidename = "s" + a;
+			var slidename = "s" +a;
 
 			var labelsArr = Object.getOwnPropertyNames(percentArr[slidename]);
 			var valuesArr = [];
@@ -1931,7 +1939,7 @@
 					}
 				},
 			};
-			if (myChart) {
+			if(myChart){
 				console.log("AFASFASFASFASFASFSAFSAAFAFASFSAFASFDFAFA");
 				myChart.destroy();
 			}
