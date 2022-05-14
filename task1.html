@@ -857,6 +857,15 @@
 		var taskLoop;
 		var taskPaused = false;
 
+		var x_center = window.innerWidth / 2;
+		var y_center = window.innerHeight / 2;
+
+		console.log("3333333333333333333333333333333333333333333");
+		console.log(x_center);
+		console.log(y_center);
+		console.log("3333333333333333333333333333333333333333333");
+
+
 		webgazer.setGazeListener(function (data, elapsedTime) {
 			if (data == null) {
 				return;
@@ -914,9 +923,29 @@
 						"type": object1.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -945,9 +974,29 @@
 						"type": object4.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -974,9 +1023,29 @@
 						"type": object7.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1004,9 +1073,29 @@
 						"type": object8.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1034,9 +1123,29 @@
 						"type": object11.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1063,9 +1172,29 @@
 						"type": object16.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1093,9 +1222,29 @@
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1132,9 +1281,29 @@
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1170,9 +1339,29 @@
 						"type": object27.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1217,9 +1406,29 @@
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1269,9 +1478,29 @@
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1322,9 +1551,29 @@
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1373,9 +1622,29 @@
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1425,9 +1694,29 @@
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1477,9 +1766,29 @@
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1529,9 +1838,29 @@
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1581,9 +1910,29 @@
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1633,9 +1982,29 @@
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1684,9 +2053,29 @@
 						"type": object86.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 		}
