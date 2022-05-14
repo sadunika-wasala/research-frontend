@@ -1,0 +1,39 @@
+vedio{
+	position: center;
+	width:200;
+	height:200; 
+	background-color: #d2cdca;
+}
+
+body {
+  background-color: #d2cdca; 
+}
+
+.topleft {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 200px;
+  height: 200px;
+}
+.topright {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 200px;
+  height: 200px;
+}
+.bottomleft {
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  width: 200px;
+  height: 200px;
+}
+.bottomright {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 200px;
+  height: 200px;
+}
