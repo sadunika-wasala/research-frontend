@@ -97,6 +97,7 @@
 			<option value="17">Slide 17</option>
 			<option value="18">Slide 18</option>
 			<option value="19">Slide 19</option>
+			<option value="all">All Slide</option>
 		</select>
 	</div>
 
@@ -2172,11 +2173,14 @@
 		}
 
 		function calculatePercentArray2(arr, percentArr2) {
+			OListAll = [];
 			for (let slide in arr) {
 
 				OList = arr[slide].map((x) => {
 					return x.type
 				})
+
+				OListAll = OListAll.concat(OList);
 
 				const count = {};
 
@@ -2195,6 +2199,22 @@
 					percentArr2[slide][type] = 100 * count[type] / tot
 				}
 
+			}
+			const count2 = {};
+
+			for (const element of OListAll) {
+				if (count2[element]) {
+					count2[element] += 1;
+				} else {
+					count2[element] = 1;
+				}
+			}
+
+			var tot2 = OListAll.length
+
+			percentArr2["sall"] = {}
+			for (let type in count2) {
+				percentArr2["sall"][type] = 100 * count2[type] / tot2
 			}
 		}
 
@@ -2324,16 +2344,26 @@
 		var objectChart;
 		var typeChart;
 		function showResults(slideNumber) {
-			if (objectChart) {
-				objectChart.destroy();
+			if (slideNumber == "all") {
+				$("#objectChart").hide();
+				if (objectChart) {
+					objectChart.destroy();
+				}
+				if (typeChart) {
+					typeChart.destroy();
+				}
+				typeChart = drawChart(slideNumber, percentArr2, typeChart, 'typeChart', 'Type Percentage - All')
+			}else {
+				$("#objectChart").show()
+				if (objectChart) {
+					objectChart.destroy();
+				}
+				objectChart = drawChart(slideNumber, percentArr, objectChart, 'objectChart', 'Object Percentage')
+				if (typeChart) {
+					typeChart.destroy();
+				}
+				typeChart = drawChart(slideNumber, percentArr2, typeChart, 'typeChart', 'Type Percentage')
 			}
-			objectChart = drawChart(slideNumber, percentArr, objectChart, 'objectChart', 'Object Percentage')
-
-			if (typeChart) {
-				typeChart.destroy();
-			}
-			typeChart = drawChart(slideNumber, percentArr2, typeChart, 'typeChart', 'Type Percentage')
-		
 			$("#resultChart").show();
 			$("#dropdown").show();
 			$("#details").show();
