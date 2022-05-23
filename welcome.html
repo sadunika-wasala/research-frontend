@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html>
 <header>
-<title>Welcome page</title>
-<link rel="stylesheet" href="style3.css" type="text/css">
+    <title>Welcome page</title>
+    <link rel="stylesheet" href="style3.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+    <style type="text/css">
+		h1{
+            font-size: 40px;
+            color: black;
+        }
+	</style>
 </header>
 <br><br><br><br><br><br><br><br>
+
 <body>
 
-<div style="text-align:center">
-<h1>සුභ දවසක් යාළුවනේ</h1><br><br>
-<input type="submit" value="ඊළග පිටුවට" name="submit" id="submit" onclick="location.href='description.html'"> 
+    <div style="text-align:center">
+        <h1>සුභ දවසක් යාළුවනේ</h1><br><br>
+        <input type="submit" value="ඊළග පිටුවට" name="submit" id="submit"
+            onclick="location.href='description.html'; ">
 
-</div>
+    </div>
+    
+    <script>
 
+         $(document).click(function (e) {
+            console.log("mouse hideeeeeeeeeeee");
+            document.documentElement.requestFullscreen();
+         });
+    </script>
 </body>
+
 </html>
