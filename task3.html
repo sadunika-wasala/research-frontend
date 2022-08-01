@@ -1,62 +1,81 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <link rel="stylesheet" href="style5.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	<link rel="stylesheet" href="style5.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<!-- <script src="webgazer_calib.js" type="text/javascript"></script> -->
+	<script src="webgazertask3.js" type="text/javascript"></script>
 </head>
+
 <body>
 
-<img src="images/task3/monkey.png" alt="Monkey" class="topleft">
-<img src="images/task3/Dog.png" alt="Dog" class="topright">
-<img src="images/task3/penguin.png" alt="Penguin" class="bottomleft">
-<img src="images/task3/deer.png" alt="Deer" class="bottomright">
+	<img src="images/task3/monkey.png" alt="Monkey" class="slide topleft">
+	<img src="images/task3/Dog.png" alt="Dog" class="slide topright">
+	<img src="images/task3/penguin.png" alt="Penguin" class="slide bottomleft">
+	<img src="images/task3/deer.png" alt="Deer" class="slide bottomright">
+	<img id="result" class="slide " style="display: none;" src="images/task1/result1.png">
 
-<video width="500" height="500" style="text-align:center; top: calc(50% - 250px); left: calc(50% - 250px); position:absolute " autoplay muted>
-  <source src="audio/movie2.mp4" type="video/mp4">
-  <source src="audio/movie2.ogg" type="video/ogg">
-</video>
-</div>
+	<video id="myVideo" width="500" height="500" class="slide"
+		style="text-align:center; top: calc(50% - 250px); left: calc(50% - 250px); position:absolute " autoplay muted >
+		<source src="audio/movie2.mp4" type="video/mp4">
+		<!-- <source src="audio/movie2.ogg" type="video/ogg"> -->
+	</video>
+	</div>
 
+	<div id="resultChart"
+		style="display: none; position: absolute; top:190px; left:60%; z-index: 9; width: 800px; height: 400px;">
+		<canvas id="objectChart" width="500px" height="300px"></canvas>
+		<canvas id="typeChart" width="500px" height="300px"></canvas>
+	</div>
 
-<script>
+	<script type="text/javascript">
 
-var arr = {};
+		var startTime = 0;
+		var arr = {};
 		var percentArr = {}
 		var percentArr2 = {}
 		var isGameOver = false;
 		var started = false;
-		var taskLoop;
-    var x_center = window.innerWidth / 2;
+		var slide = "s1"
+		//var taskLoop;
+		var x_center = window.innerWidth / 2;
 		var y_center = window.innerHeight / 2;
 
+		var vidEnded = false;
+		var vid = document.getElementById("myVideo");
 
-  boundaryArr = {
-			
+		vid.addEventListener("ended", function(){
+			vidEnded = true;
+			stopTask();
+		});
+		sessionStorage.setItem("task_name", "task3");
+
+		boundaryArr = {
+			"s1": {
 				"T1": {
 					"name": "monkey",
-					// "type": "L",
+					"type": "FFT",
 					"top": 12,
 					"bottom": 196,
 					"left": 10,
 					"right": 205,
 				},
-		
-			
+
+
 				"T2": {
 					"name": "dog",
-					// "type": "S",
+					"type": "FFT",
 					"top": 12,
 					"bottom": 196,
 					"left": 1154,
-					"right": 1347,
+					"right": 1354,
 				},
 				"T3": {
 					"name": "penguen",
-					// "type": "S",
+					"type": "FFT",
 					"top": 564,
 					"bottom": 750,
 					"left": 10,
@@ -64,31 +83,31 @@ var arr = {};
 				},
 				"T4": {
 					"name": "deer",
-					// "type": "S",
+					"type": "FFT",
 					"top": 562,
 					"bottom": 749,
 					"left": 1154,
 					"right": 1354,
 				},
-		
-			
+
+
 				"V1": {
 					"name": "head",
-					// "type": "S",
+					"type": "S",
 					"top": 194,
 					"bottom": 336,
 					"left": 632,
 					"right": 777,
 				},
-				"V1": {
+				"V2": {
 					"name": "body",
-					// "type": "S",
+					"type": "S",
 					"top": 358,
 					"bottom": 529,
 					"left": 589,
 					"right": 829,
 				},
-				"V1": {
+				"V3": {
 					"name": "vedio",
 					"type": "S",
 					"top": 153,
@@ -96,54 +115,273 @@ var arr = {};
 					"left": 432,
 					"right": 932,
 				},
-    }
+				"LC": {
+					"name": "leftcorner",
+					"type": "none",
+					"top": 0,
+					"bottom": 656,
+					"left": 0,
+					"right": 9,
+				},
+				"RC": {
+					"name": "rightcorner",
+					"type": "none",
+					"top": 0,
+					"bottom": 767,
+					"left": 1355,
+					"right": 1365,
+				},
+			},
+		}
 
-    
+		webgazer.setGazeListener(function (data, elapsedTime) {
+			if (data == null) {
+				return;
+			}
 
-    function printPred() {
-			var prediction = webgazer.getCurrentPrediction();
-			if (prediction) {
-				var x = prediction.x;
-				var y = prediction.y;
-				console.log(prediction);
+			if (!started) {
+
+				//taskLoop = setInterval(showSlide, 9000);
+				started = true;
+
+				//time stamp converter
+				if (startTime == 0) {
+					startTime = Date.now()
+					console.log("startTime1");
+					console.log(startTime);
+					console.log("startTime1");
+				} else {
+
+				}
+			}
+
+			var xprediction = data.x; //these x coordinates are relative to the viewport
+			var yprediction = data.y; //these y coordinates are relative to the viewport
+			// console.log(elapsedTime); //elapsed time is based on time since begin was called
+			// console.log(xprediction,yprediction); 
+
+			if (!vidEnded) {
+				gazeObject = getGazeObject(slide, xprediction, yprediction)
+
+				if (arr[slide] == undefined) {
+					arr[slide] = [];
+				}
+
+				arr[slide].push({
+					"timestamp": (Date.now() - startTime) / 1000,
+					//"timestamp": Date.now(),
+					"x": xprediction,
+					"y": yprediction,
+					"bb": gazeObject.name,
+					"type": gazeObject.type
+				})
+			}
+
+		}).begin();
+
+		function stopTask() {
+			console.log("stoped");
+
+			$(".slide").hide();
+			$("#result").show();
+			// $("#slideList").show();
+			slide = "result";
+			// clearInterval(taskLoop);
+
+			// $("#objectName").text("NFFT")
+			webgazer.pause();
+
+			//calculate object percentages for each slide
+			calculatePercentArray(arr, percentArr);
+			calculatePercentArray2(arr, percentArr2);
+
+			//showResults(slideNumber);
+			sendGazeDataToBackend(arr, percentArr);
+
+		}
+
+		
+		function calculatePercentArray(arr, percentArr) {
+			for (let slide in arr) {
+
+				OList = arr[slide].map((x) => {
+					return x.bb
+				})
+
+				const count = {};
+
+				for (const element of OList) {
+					if (count[element]) {
+						count[element] += 1;
+					} else {
+						count[element] = 1;
+					}
+				}
+
+				var tot = OList.length
+
+				percentArr[slide] = {}
+				for (let name in count) {
+					percentArr[slide][name] = 100 * count[name] / tot
+				}
+
 			}
 		}
 
-    function getGazeObject(xcoordinate, ycoordinate) {
-      object1 = boundaryArr["T1"]
-				if (((object1.left < xcoordinate) && (xcoordinate < object1.right)) && ((object1.top < ycoordinate) && (ycoordinate < object1.bottom))) {
+		function calculatePercentArray2(arr, percentArr2) {
+			OListAll = [];
+			for (let slide in arr) {
+
+				OList = arr[slide].map((x) => {
+					return x.type
+				})
+
+				console.log("OList 1")
+				console.log(OList)
+				OListAll = OListAll.concat(OList);
+
+				const count = {};
+
+				for (const element of OList) {
+					if (count[element]) {
+						count[element] += 1;
+					} else {
+						count[element] = 1;
+					}
+				}
+
+				var tot = OList.length
+
+				percentArr2[slide] = {}
+				for (let type in count) {
+					percentArr2[slide][type] = 100 * count[type] / tot
+				}
+
+			}
+			const count2 = {};
+			console.log("OListAll 1")
+			console.log(OListAll)
+			for (const element of OListAll) {
+				if (count2[element]) {
+					count2[element] += 1;
+				} else {
+					count2[element] = 1;
+				}
+			}
+
+			console.log("OListAll 2")
+			console.log(OListAll)
+			var tot2 = OListAll.length
+
+			percentArr2["sall"] = {}
+			for (let type in count2) {
+				percentArr2["sall"][type] = 100 * count2[type] / tot2
+			}
+		}
+
+
+		function scaleCoordinates(val) {
+			factor = window.innerWidth / 1366;
+			return val * factor;
+		}
+
+		function getGazeObject(slide, xcoordinate, ycoordinate) {
+
+			if (slide == "s1") {
+				object1 = boundaryArr[slide]["T1"]
+				if (((scaleCoordinates(object1.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object1.right))) && ((scaleCoordinates(object1.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object1.bottom)))) {
 					return {
 						"name": object1.name,
 						"type": object1.type,
 					}
 				}
+				object2 = boundaryArr[slide]["T2"]
+				if (((scaleCoordinates(object2.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object2.right))) && ((scaleCoordinates(object2.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object2.bottom)))) {
+					return {
+						"name": object2.name,
+						"type": object2.type,
+					}
+				}
+
+				object3 = boundaryArr[slide]["T3"]
+				if (((scaleCoordinates(object3.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object3.right))) && ((scaleCoordinates(object3.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object3.bottom)))) {
+					return {
+						"name": object3.name,
+						"type": object3.type,
+					}
+				}
+				object4 = boundaryArr[slide]["T4"]
+				if (((scaleCoordinates(object4.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object4.right))) && ((scaleCoordinates(object4.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object4.bottom)))) {
+					return {
+						"name": object4.name,
+						"type": object4.type,
+					}
+				}
+				object5 = boundaryArr[slide]["V1"]
+				if (((scaleCoordinates(object5.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object5.right))) && ((scaleCoordinates(object5.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object5.bottom)))) {
+					return {
+						"name": object5.name,
+						"type": object5.type,
+					}
+				}
+
+				object6 = boundaryArr[slide]["V2"]
+				if (((scaleCoordinates(object6.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object6.right))) && ((scaleCoordinates(object6.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object6.bottom)))) {
+					return {
+						"name": object6.name,
+						"type": object6.type,
+					}
+				}
+				object7 = boundaryArr[slide]["V3"]
+				if (((scaleCoordinates(object7.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object7.right))) && ((scaleCoordinates(object7.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object7.bottom)))) {
+					return {
+						"name": object7.name,
+						"type": object7.type,
+					}
+				}
+				object8 = boundaryArr[slide]["LC"]
+				if (((scaleCoordinates(object8.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object8.right))) && ((scaleCoordinates(object8.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object8.bottom)))) {
+					return {
+						"name": object8.name,
+						"type": object8.type,
+					}
+				}
+				object9 = boundaryArr[slide]["RC"]
+				if (((scaleCoordinates(object9.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object9.right))) && ((scaleCoordinates(object9.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object9.bottom)))) {
+					return {
+						"name": object9.name,
+						"type": object9.type,
+					}
+				}
+				
 				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
 					return {
 						"name": "topleft",
-						"type": "none"
+						"type": "NFFT"
 					}
 				}
 				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
 					return {
 						"name": "topright",
-						"type": "none"
+						"type": "NFFT"
 					}
 				}
 				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
 					return {
 						"name": "bottomleft",
-						"type": "none"
+						"type": "NFFT"
 					}
 				}
 				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
 					return {
 						"name": "bottomright",
-						"type": "none"
+						"type": "NFFT"
 					}
 				}
-    }
+			}
+		}
 
-    function sendGazeDataToBackend(dataArr, percentArray, user, task) {
+		function sendGazeDataToBackend(dataArr, percentArray, user, task) {
 			//ajax
 			$.ajax({
 				type: "POST",
@@ -168,12 +406,124 @@ var arr = {};
 			});
 		}
 
-</script>
+		var dynamicColors = function () {
+			var r = Math.floor(Math.random() * 255);
+			var g = Math.floor(Math.random() * 255);
+			var b = Math.floor(Math.random() * 255);
 
-  
-  
-  
-  
-  
+			return "rgb(" + r + "," + g + "," + b + ")";
+
+		};
+
+		function drawChart(slideNumber, array, chart, canvasName, chartTitle) {
+			$("#" + canvasName).hide();
+
+			var slidename = "s" + slideNumber;
+			if (!array[slidename]) {
+				return;
+			}
+			var labelsArr = Object.getOwnPropertyNames(array[slidename]);
+			var valuesArr = [];
+			var colorArr = [];
+			labelsArr.forEach((label) => {
+				valuesArr.push(array[slidename][label]);
+				colorArr.push(dynamicColors());
+			})
+
+			const data = {
+				labels: labelsArr,
+				datasets: [
+					{
+						label: 'Slide ' + slideNumber,
+						data: valuesArr,
+						backgroundColor: colorArr,
+					}
+				]
+			};
+
+			const config = {
+				type: 'bar',
+				data: data,
+				options: {
+					responsive: true,
+					plugins: {
+						legend: {
+							position: 'top',
+							display: false
+						},
+						title: {
+							display: true,
+							text: chartTitle
+						}
+					},
+					scales: {
+						xAxes: [{
+							display: true,
+							scaleLabel: {
+								display: true,
+								labelString: 'Month test example'
+							}
+						}],
+						yAxes: [{
+							display: true,
+							scaleLabel: {
+								display: true,
+								labelString: 'Value test example'
+							}
+						}]
+					}
+				},
+			};
+			if (chart) {
+				chart.destroy();
+			}
+			// console.log("valuesArr")
+			// console.log(valuesArr)
+			// console.log("valuesArr")
+			chart = new Chart(document.getElementById(canvasName), config);
+			if (valuesArr.length > 0) {
+				$("#" + canvasName).show();
+			}
+
+			return chart;
+		}
+
+		var objectChart;
+		var typeChart;
+		function showResults(slideNumber) {
+			if (slideNumber == "all") {
+				$("#objectChart").hide();
+				if (objectChart) {
+					objectChart.destroy();
+				}
+				if (typeChart) {
+					typeChart.destroy();
+				}
+				typeChart = drawChart(slideNumber, percentArr2, typeChart, 'typeChart', 'Type Percentage - All')
+			} else {
+				$("#objectChart").show()
+				if (objectChart) {
+					objectChart.destroy();
+				}
+				objectChart = drawChart(slideNumber, percentArr, objectChart, 'objectChart', 'Object Percentage')
+				if (typeChart) {
+					typeChart.destroy();
+				}
+				typeChart = drawChart(slideNumber, percentArr2, typeChart, 'typeChart', 'Type Percentage')
+			}
+			$("#resultChart").show();
+			$("#dropdown").show();
+			$("#details").show();
+		}
+
+
+	</script>
+
+
+
+
+
+
 </body>
+
 </html>

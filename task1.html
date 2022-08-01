@@ -7,7 +7,7 @@
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script src="webgazer_calib.js" type="text/javascript"></script>
+	<script src="webgazertask1.js" type="text/javascript"></script>
 	<style type="text/css">
 		body {
 			background-color: #FFF2CC;
@@ -925,7 +925,7 @@
 					"bb": gazeObject.name,
 					"type": gazeObject.type
 				})
-				$("#objectName").text(gazeObject.name, xprediction, yprediction)
+				//$("#objectName").text(gazeObject.name, xprediction, yprediction)
 			}
 
 		}).begin();
@@ -2172,7 +2172,7 @@
 			slide = "result";
 			clearInterval(taskLoop);
 
-			$("#objectName").text("none")
+			//$("#objectName").text("none")
 			webgazer.pause();
 
 			//calculate object percentages for each slide
@@ -2275,7 +2275,7 @@
 
 				slideID = "#s" + parseInt(increment);
 				$("#ch").show();
-				$("#objectName").text("none")
+				// $("#objectName").text("none")
 				slide = "ch";
 				tempT = setTimeout(function () {
 					$("#ch").hide();

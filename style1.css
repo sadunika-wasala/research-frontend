@@ -15,18 +15,18 @@ body{
 }
  
  .button {
-  background-color: #4CAF50; /* Green */
+  background-color: #e4246e; /* Green */
   border: 1px;
   border-radius: 12px;
-  color: white;
+  color: rgb(255, 251, 251);
   /* padding: 15px 32px; */
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 15px;
-  margin: 4px 2px;
+  font-size: 31px;
+  margin: 10px 10px;
   cursor: pointer;
-  width:270px;
+  width:388px;
 }
 
 #search {
@@ -34,7 +34,7 @@ body{
   width: 300px;
   height: 380px;
   margin-top: 50px; 
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 #results {
@@ -42,5 +42,5 @@ body{
   width: 300px;
   height: 400px;
   margin-top: 50px; 
-  overflow: auto;
+  /* overflow: auto; */
 }

@@ -6,97 +6,96 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
-	<!-- dropdown hide  -->
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-	<script src="webgazer_calib.js" type="text/javascript"></script>
+	<script src="webgazertask1.js" type="text/javascript"></script>
 	<style type="text/css">
 		body {
-			background-color: rgb(168, 209, 141);
+			background-color: #FFF2CC;
 		}
 
 		.face {
 			height: 130px;
 			position: absolute;
 		}
+
 		.dropdown {
 			position: absolute;
 			display: none;
 			width: 200px;
 			height: 30px;
-			top: 40%;
+			top: 30%;
 			left: 25%;
 			font-size: 17px;
 			background: #f8faf8;
 		}
 
-		.dropdown-content {
-			display: none;
+		.details {
 			position: absolute;
-			background-color: #f1f1f1;
-			min-width: 160px;
-			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-			z-index: 1;
+			display: none;
+			width: 642px;
+			height: 550px;
+			top: 45%;
+			left: 2%;
 		}
 
-		.dropdown-content option {
-			color: black;
-			padding: 12px 16px;
-			text-decoration: none;
-			display: block;
+		img.sgif {
+			/* width: 1368px;
+			height: 766; */
+			width: 100%;
+			height: 100%;
+			object-fit: fill;
 		}
 
-		.dropdown-content option:hover {
-			background-color: #ddd;
-		}
-
-		.dropdown:hover .dropdown-content {
-			display: block;
-		}
-
-		.dropdown:hover .dropbtn {
-			background-color: #3e8e41;
+		img.simg {
+			/* width: 1368px;
+			height: 766; */
+			width: 100%;
+			height: 100%;
+			object-fit: fill;
 		}
 	</style>
 </head>
 
-<body style="margin: 0px; overflow: hidden;">
+<body style="margin: 0px; ">
 	<audio id="backgroundsound" autoplay loop src="audio/background.mp3">
-		<!-- <source src="audio/background.mp3" type="audio/mpeg"> -->
+
 	</audio>
+	<img id="ch" class="slide simg" style="display: none;" src="images/task1/CHR.png">
+	<img id="s1" class="slide simg" style="display: none;" src="images/task1/F1.png">
+	<img id="s2" class="slide simg" style="display: none;" src="images/task1/F2.png">
+	<img id="s3" class="slide sgif" style="display: none;" src="images/task1/gif1.gif">
+	<img id="s4" class="slide simg" style="display: none;" src="images/task1/F3.png">
+	<img id="s5" class="slide sgif" style="display: none;" src="images/task1/gif2.gif">
+	<img id="s6" class="slide simg" style="display: none;" src="images/task1/F4R.png">
+	<img id="s7" class="slide simg" style="display: none;" src="images/task1/F5R.png">
+	<img id="s8" class="slide simg" style="display: none;" src="images/task1/F6R.png">
+	<img id="s9" class="slide simg" style="display: none;" src="images/task1/F7R.png">
+	<img id="s10" class="slide simg" style="display: none;" src="images/task1/F8R.png">
+	<img id="s11" class="slide simg" style="display: none;" src="images/task1/F9R.png">
+	<img id="s12" class="slide simg" style="display: none;" src="images/task1/F10R.png">
+	<img id="s13" class="slide simg" style="display: none;" src="images/task1/F11R.png">
+	<img id="s14" class="slide simg" style="display: none;" src="images/task1/F12R.png">
+	<img id="s15" class="slide simg" style="display: none;" src="images/task1/F13R.png">
+	<img id="s16" class="slide simg" style="display: none;" src="images/task1/F14R.png">
+	<img id="s17" class="slide simg" style="display: none;" src="images/task1/F15R.png">
+	<img id="s18" class="slide simg" style="display: none;" src="images/task1/F16R.png">
+	<img id="s19" class="slide simg" style="display: none;" src="images/task1/F17R.png">
 
-	<img id="ch" class="slide" style="display: none;" src="images/task1/CHR.png">
-	<img id="s1" class="slide" style="display: none;" src="images/task1/F1.png">
-	<img id="s2" class="slide" style="display: none;" src="images/task1/F2.png">
-	<img id="s3" class="slide" style="display: none;" src="images/task1/gif1.gif">
-	<img id="s4" class="slide" style="display: none;" src="images/task1/F3.png">
-	<img id="s5" class="slide" style="display: none;" src="images/task1/gif2.gif">
-	<img id="s6" class="slide" style="display: none;" src="images/task1/F4R.png">
-	<img id="s7" class="slide" style="display: none;" src="images/task1/F5R.png">
-	<img id="s8" class="slide" style="display: none;" src="images/task1/F6R.png">
-	<img id="s9" class="slide" style="display: none;" src="images/task1/F7R.png">
-	<img id="s10" class="slide" style="display: none;" src="images/task1/F8R.png">
-	<img id="s11" class="slide" style="display: none;" src="images/task1/F9R.png">
-	<img id="s12" class="slide" style="display: none;" src="images/task1/F10R.png">
-	<img id="s13" class="slide" style="display: none;" src="images/task1/F11R.png">
-	<img id="s14" class="slide" style="display: none;" src="images/task1/F12R.png">
-	<img id="s15" class="slide" style="display: none;" src="images/task1/F13R.png">
-	<img id="s16" class="slide" style="display: none;" src="images/task1/F14R.png">
-	<img id="s17" class="slide" style="display: none;" src="images/task1/F15R.png">
-	<img id="s18" class="slide" style="display: none;" src="images/task1/F16R.png">
-	<img id="s19" class="slide" style="display: none;" src="images/task1/F17R.png">
+	<img id="result" class="slide " style="display: none;" src="images/task1/result1.png">
 
-	<img id="result" class="slide" style="display: none;" src="images/task1/result1.png">
+	<img id="details" class="details " style="display: none;" src="images/task1/detail.png">
+
 
 	<div id="resultChart"
-		style="display: none; position: absolute; top:190px; left:50%; z-index: 9; width: 500px; height: 300px;">
-		<canvas id="myChart" width="500px" height="300px"></canvas>
+		style="display: none; position: absolute; top:190px; left:60%; z-index: 9; width: 800px; height: 400px;">
+		<canvas id="objectChart" width="500px" height="300px"></canvas>
+		<canvas id="typeChart" width="500px" height="300px"></canvas>
 	</div>
 
-	<!-- dropdown -->
-
-	<div >
+	<!-- dropdown for 1st bar chart-->
+	<div>
 		<select id="slideList" class="dropdown" onchange="slideChange()">
-			<option value="none" selected disabled hidden>Select a Slide</option>
+			<option value="none" selected disabled hidden>Select Slide</option>
 			<option value="1">Slide 1</option>
 			<option value="2">Slide 2</option>
 			<option value="3">Slide 3</option>
@@ -116,21 +115,18 @@
 			<option value="17">Slide 17</option>
 			<option value="18">Slide 18</option>
 			<option value="19">Slide 19</option>
+			<option value="all">All Slide</option>
 		</select>
 	</div>
-
-	<div id="message"></div>
-
 
 	<script type="text/javascript">
 
 		function slideChange() {
-
 			var slideNumber = document.getElementById("slideList").value;
 			showResults(slideNumber);
 		}
 
-		sessionStorage.setItem("task_name", "task1");
+		sessionStorage.setItem("task_name", "task2");
 
 		boundaryArr = {
 			"s1": {
@@ -266,7 +262,7 @@
 				},
 				"F6I3": {
 					"name": "hat",
-					"type": "I",
+					"type": "L",
 					"top": 403,
 					"bottom": 678,
 					"left": 560,
@@ -292,7 +288,7 @@
 				},
 				"F7I3": {
 					"name": "hat",
-					"type": "I",
+					"type": "L",
 					"top": 109,
 					"bottom": 355,
 					"left": 217,
@@ -863,31 +859,51 @@
 			},
 		};
 
-		// $(document).ready(function (){
-		// 	document.documentElement.requestFullscreen();
-		// })
 
 		// <!-- start webgazer -->
+		var startTime = 0;
+		var pausedTime = 0;
+		var resumeTime = 0;
 		var arr = {};
 		var percentArr = {}
+		var percentArr2 = {}
 		var slideID = null;
 		var slide = "ch";
 		//pause variable(use to store the stste of game)
 		var isGameOver = false;
-		var a 
+		var slideNumber
 		var started = false;
 		var taskLoop;
 		var taskPaused = false;
+
+		var x_center = window.innerWidth / 2;
+		var y_center = window.innerHeight / 2;
+
+		console.log("3333333333333333333333333333333333333333333");
+		console.log(x_center);
+		console.log(y_center);
+		console.log("3333333333333333333333333333333333333333333");
+
 
 		webgazer.setGazeListener(function (data, elapsedTime) {
 			if (data == null) {
 				return;
 			}
 
-			if(!started){
+			if (!started) {
 				showSlide();
-				taskLoop = setInterval(showSlide, 7000);
+				taskLoop = setInterval(showSlide, 9000);
 				started = true;
+
+				//time stamp converter
+				if (startTime == 0) {
+					startTime = Date.now()
+					console.log("startTime1");
+					console.log(startTime);
+					console.log("startTime1");
+				}else{
+
+				}
 			}
 
 			var xprediction = data.x; //these x coordinates are relative to the viewport
@@ -903,7 +919,10 @@
 				if (arr[slide] == undefined) {
 					arr[slide] = [];
 				}
+
 				arr[slide].push({
+					"timestamp": (Date.now() - startTime)/1000,
+					//"timestamp": Date.now(),
 					"x": xprediction,
 					"y": yprediction,
 					"bb": gazeObject.name,
@@ -914,6 +933,10 @@
 
 		}).begin();
 
+		function scaleCoordinates(val){
+			factor = window.innerWidth / 1366;
+			return val * factor;
+		}
 
 		function printPred() {
 			var prediction = webgazer.getCurrentPrediction();
@@ -925,33 +948,45 @@
 		}
 
 		function getGazeObject(slide, xcoordinate, ycoordinate) {
-			//cootima bounding box eke condition eka mulinma liyanna one
-			//condition for object1
-			// if () object1.left < xcoordinate < object1.right && object1.top < ycoordinate < object1.bottom ) then return object1
-			// console.log("object1")
-			// console.log(object1)
-			// console.log("/object1")
 
-			//final condition set
-			//slide1
 			if (slide == "s1") {
 				object1 = boundaryArr[slide]["F1I1"]
-				if (((object1.left < xcoordinate) && (xcoordinate < object1.right)) && ((object1.top < ycoordinate) && (ycoordinate < object1.bottom))) {
+				if (((scaleCoordinates(object1.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object1.right))) && ((scaleCoordinates(object1.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object1.bottom)))) {
 					return {
 						"name": object1.name,
 						"type": object1.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
 			//slide2
 			if (slide == "s2") {
 				object2 = boundaryArr[slide]["F2I1"]
-				if (((object2.left < xcoordinate) && (xcoordinate < object2.right)) && ((object2.top < ycoordinate) && (ycoordinate < object2.bottom))) {
+				if (((scaleCoordinates(object2.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object2.right))) && ((scaleCoordinates(object2.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object2.bottom)))) {
 					return {
 						"name": object2.name,
 						"type": object2.type,
@@ -959,7 +994,7 @@
 				}
 
 				object3 = boundaryArr[slide]["F2I2"]
-				if (((object3.left < xcoordinate) && (xcoordinate < object3.right)) && ((object3.top < ycoordinate) && (ycoordinate < object3.bottom))) {
+				if (((scaleCoordinates(object3.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object3.right))) && ((scaleCoordinates(object3.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object3.bottom)))) {
 					return {
 						"name": object3.name,
 						"type": object3.type,
@@ -967,58 +1002,98 @@
 				}
 
 				object4 = boundaryArr[slide]["F2I3"]
-				if (((object4.left < xcoordinate) && (xcoordinate < object4.right)) && ((object4.top < ycoordinate) && (ycoordinate < object4.bottom))) {
+				if (((scaleCoordinates(object4.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object4.right))) && ((scaleCoordinates(object4.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object4.bottom)))) {
 					return {
 						"name": object4.name,
 						"type": object4.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
 			//slide3
 			if (slide == "s3") {
 				object5 = boundaryArr[slide]["F3I1"]
-				if (((object5.left < xcoordinate) && (xcoordinate < object5.right)) && ((object5.top < ycoordinate) && (ycoordinate < object5.bottom))) {
+				if (((scaleCoordinates(object5.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object5.right))) && ((scaleCoordinates(object5.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object5.bottom)))) {
 					return {
 						"name": object5.name,
 						"type": object5.type,
 					}
 				}
 				object6 = boundaryArr[slide]["F3I2"]
-				if (((object6.left < xcoordinate) && (xcoordinate < object6.right)) && ((object6.top < ycoordinate) && (ycoordinate < object6.bottom))) {
+				if (((scaleCoordinates(object6.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object6.right))) && ((scaleCoordinates(object6.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object6.bottom)))) {
 					return {
 						"name": object6.name,
 						"type": object6.type,
 					}
 				}
 				object7 = boundaryArr[slide]["F3I3"]
-				if (((object7.left < xcoordinate) && (xcoordinate < object7.right)) && ((object7.top < ycoordinate) && (ycoordinate < object7.bottom))) {
+				if (((scaleCoordinates(object7.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object7.right))) && ((scaleCoordinates(object7.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object7.bottom)))) {
 					return {
 						"name": object7.name,
 						"type": object7.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
 			//slide4
 			if (slide == "s4") {
 				object9 = boundaryArr[slide]["F4I2"]
-				if (((object9.left < xcoordinate) && (xcoordinate < object9.right)) && ((object9.top < ycoordinate) && (ycoordinate < object9.bottom))) {
+				if (((scaleCoordinates(object9.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object9.right))) && ((scaleCoordinates(object9.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object9.bottom)))) {
 					return {
 						"name": object9.name,
 						"type": object9.type,
 					}
 				}
 				object10 = boundaryArr[slide]["F4I3"]
-				if (((object10.left < xcoordinate) && (xcoordinate < object10.right)) && ((object10.top < ycoordinate) && (ycoordinate < object10.bottom))) {
+				if (((scaleCoordinates(object10.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object10.right))) && ((scaleCoordinates(object10.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object10.bottom)))) {
 					return {
 						"name": object10.name,
 						"type": object10.type,
@@ -1026,29 +1101,49 @@
 				}
 
 				object8 = boundaryArr[slide]["F4I1"]
-				if (((object8.left < xcoordinate) && (xcoordinate < object8.right)) && ((object8.top < ycoordinate) && (ycoordinate < object8.bottom))) {
+				if (((scaleCoordinates(object8.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object8.right))) && ((scaleCoordinates(object8.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object8.bottom)))) {
 					return {
 						"name": object8.name,
 						"type": object8.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
 			//slide5
 			if (slide == "s5") {
 				object12 = boundaryArr[slide]["F5I2"]
-				if (((object12.left < xcoordinate) && (xcoordinate < object12.right)) && ((object12.top < ycoordinate) && (ycoordinate < object12.bottom))) {
+				if (((scaleCoordinates(object12.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object12.right))) && ((scaleCoordinates(object12.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object12.bottom)))) {
 					return {
 						"name": object12.name,
 						"type": object12.type,
 					}
 				}
 				object13 = boundaryArr[slide]["F5I3"]
-				if (((object13.left < xcoordinate) && (xcoordinate < object13.right)) && ((object13.top < ycoordinate) && (ycoordinate < object13.bottom))) {
+				if (((scaleCoordinates(object13.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object13.right))) && ((scaleCoordinates(object13.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object13.bottom)))) {
 					return {
 						"name": object13.name,
 						"type": object13.type,
@@ -1056,74 +1151,134 @@
 				}
 
 				object11 = boundaryArr[slide]["F5I1"]
-				if (((object11.left < xcoordinate) && (xcoordinate < object11.right)) && ((object11.top < ycoordinate) && (ycoordinate < object11.bottom))) {
+				if (((scaleCoordinates(object11.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object11.right))) && ((scaleCoordinates(object11.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object11.bottom)))) {
 					return {
 						"name": object11.name,
 						"type": object11.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
 			//slide6
 			if (slide == "s6") {
 				object14 = boundaryArr[slide]["F6I1"]
-				if (((object14.left < xcoordinate) && (xcoordinate < object14.right)) && ((object14.top < ycoordinate) && (ycoordinate < object14.bottom))) {
+				if (((scaleCoordinates(object14.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object14.right))) && ((scaleCoordinates(object14.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object14.bottom)))) {
 					return {
 						"name": object14.name,
 						"type": object14.type,
 					}
 				}
 				object15 = boundaryArr[slide]["F6I2"]
-				if (((object15.left < xcoordinate) && (xcoordinate < object15.right)) && ((object15.top < ycoordinate) && (ycoordinate < object15.bottom))) {
+				if (((scaleCoordinates(object15.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object15.right))) && ((scaleCoordinates(object15.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object15.bottom)))) {
 					return {
 						"name": object15.name,
 						"type": object15.type,
 					}
 				}
 				object16 = boundaryArr[slide]["F6I3"]
-				if (((object16.left < xcoordinate) && (xcoordinate < object16.right)) && ((object16.top < ycoordinate) && (ycoordinate < object16.bottom))) {
+				if (((scaleCoordinates(object16.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object16.right))) && ((scaleCoordinates(object16.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object16.bottom)))) {
 					return {
 						"name": object16.name,
 						"type": object16.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
 			//slide7
 			if (slide == "s7") {
 				object17 = boundaryArr[slide]["F7I1"]
-				if (((object17.left < xcoordinate) && (xcoordinate < object17.right)) && ((object17.top < ycoordinate) && (ycoordinate < object17.bottom))) {
+				if (((scaleCoordinates(object17.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object17.right))) && ((scaleCoordinates(object17.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object17.bottom)))) {
 					return {
 						"name": object17.name,
 						"type": object17.type,
 					}
 				}
 				object18 = boundaryArr[slide]["F7I2"]
-				if (((object18.left < xcoordinate) && (xcoordinate < object18.right)) && ((object18.top < ycoordinate) && (ycoordinate < object18.bottom))) {
+				if (((scaleCoordinates(object18.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object18.right))) && ((scaleCoordinates(object18.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object18.bottom)))) {
 					return {
 						"name": object18.name,
 						"type": object18.type,
 					}
 				}
 				object19 = boundaryArr[slide]["F7I3"]
-				if (((object19.left < xcoordinate) && (xcoordinate < object19.right)) && ((object19.top < ycoordinate) && (ycoordinate < object19.bottom))) {
+				if (((scaleCoordinates(object19.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object19.right))) && ((scaleCoordinates(object19.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object19.bottom)))) {
 					return {
 						"name": object19.name,
 						"type": object19.type,
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1131,7 +1286,7 @@
 			if (slide == "s8") {
 
 				object20 = boundaryArr[slide]["F8I1"]
-				if (((object20.left < xcoordinate) && (xcoordinate < object20.right)) && ((object20.top < ycoordinate) && (ycoordinate < object20.bottom))) {
+				if (((scaleCoordinates(object20.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object20.right))) && ((scaleCoordinates(object20.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object20.bottom)))) {
 					return {
 						"name": object20.name,
 						"type": object20.type,
@@ -1139,30 +1294,50 @@
 				}
 
 				object21 = boundaryArr[slide]["F8I2"]
-				if (((object21.left < xcoordinate) && (xcoordinate < object21.right)) && ((object21.top < ycoordinate) && (ycoordinate < object21.bottom))) {
+				if (((scaleCoordinates(object21.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object21.right))) && ((scaleCoordinates(object21.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object21.bottom)))) {
 					return {
 						"name": object21.name,
 						"type": object21.type,
 					}
 				}
 				object22 = boundaryArr[slide]["F8I3"]
-				if (((object22.left < xcoordinate) && (xcoordinate < object22.right)) && ((object22.top < ycoordinate) && (ycoordinate < object22.bottom))) {
+				if (((scaleCoordinates(object22.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object22.right))) && ((scaleCoordinates(object22.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object22.bottom)))) {
 					return {
 						"name": object22.name,
 						"type": object22.type,
 					}
 				}
 				object23 = boundaryArr[slide]["F8I4"]
-				if (((object23.left < xcoordinate) && (xcoordinate < object23.right)) && ((object23.top < ycoordinate) && (ycoordinate < object23.bottom))) {
+				if (((scaleCoordinates(object23.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object23.right))) && ((scaleCoordinates(object23.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object23.bottom)))) {
 					return {
 						"name": object23.name,
 						"type": object23.type,
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1170,7 +1345,7 @@
 			if (slide == "s9") {
 
 				object24 = boundaryArr[slide]["F9I1"]
-				if (((object24.left < xcoordinate) && (xcoordinate < object24.right)) && ((object24.top < ycoordinate) && (ycoordinate < object24.bottom))) {
+				if (((scaleCoordinates(object24.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object24.right))) && ((scaleCoordinates(object24.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object24.bottom)))) {
 					return {
 						"name": object24.name,
 						"type": object24.type,
@@ -1178,29 +1353,49 @@
 				}
 
 				object25 = boundaryArr[slide]["F9I2"]
-				if (((object25.left < xcoordinate) && (xcoordinate < object25.right)) && ((object25.top < ycoordinate) && (ycoordinate < object25.bottom))) {
+				if (((scaleCoordinates(object25.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object25.right))) && ((scaleCoordinates(object25.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object25.bottom)))) {
 					return {
 						"name": object25.name,
 						"type": object25.type,
 					}
 				}
 				object26 = boundaryArr[slide]["F9I3"]
-				if (((object26.left < xcoordinate) && (xcoordinate < object26.right)) && ((object26.top < ycoordinate) && (ycoordinate < object26.bottom))) {
+				if (((scaleCoordinates(object26.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object26.right))) && ((scaleCoordinates(object26.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object26.bottom)))) {
 					return {
 						"name": object26.name,
 						"type": object26.type,
 					}
 				}
 				object27 = boundaryArr[slide]["F9I4"]
-				if (((object27.left < xcoordinate) && (xcoordinate < object27.right)) && ((object27.top < ycoordinate) && (ycoordinate < object27.bottom))) {
+				if (((scaleCoordinates(object27.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object27.right))) && ((scaleCoordinates(object27.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object27.bottom)))) {
 					return {
 						"name": object27.name,
 						"type": object27.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1208,7 +1403,7 @@
 			if (slide == "s10") {
 
 				object28 = boundaryArr[slide]["F10I1"]
-				if (((object28.left < xcoordinate) && (xcoordinate < object28.right)) && ((object28.top < ycoordinate) && (ycoordinate < object28.bottom))) {
+				if (((scaleCoordinates(object28.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object28.right))) && ((scaleCoordinates(object28.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object28.bottom)))) {
 					return {
 						"name": object28.name,
 						"type": object28.type,
@@ -1216,7 +1411,7 @@
 				}
 
 				object29 = boundaryArr[slide]["F10I2"]
-				if (((object29.left < xcoordinate) && (xcoordinate < object29.right)) && ((object29.top < ycoordinate) && (ycoordinate < object29.bottom))) {
+				if (((scaleCoordinates(object29.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object29.right))) && ((scaleCoordinates(object29.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object29.bottom)))) {
 					return {
 						"name": object29.name,
 						"type": object29.type,
@@ -1224,30 +1419,50 @@
 				}
 
 				object30 = boundaryArr[slide]["F10I3"]
-				if (((object30.left < xcoordinate) && (xcoordinate < object30.right)) && ((object30.top < ycoordinate) && (ycoordinate < object30.bottom))) {
+				if (((scaleCoordinates(object30.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object30.right))) && ((scaleCoordinates(object30.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object30.bottom)))) {
 					return {
 						"name": object30.name,
 						"type": object30.type,
 					}
 				}
 				object31 = boundaryArr[slide]["F10I4"]
-				if (((object31.left < xcoordinate) && (xcoordinate < object31.right)) && ((object31.top < ycoordinate) && (ycoordinate < object31.bottom))) {
+				if (((scaleCoordinates(object31.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object31.right))) && ((scaleCoordinates(object31.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object31.bottom)))) {
 					return {
 						"name": object31.name,
 						"type": object31.type,
 					}
 				}
 				object32 = boundaryArr[slide]["F10I5"]
-				if (((object32.left < xcoordinate) && (xcoordinate < object32.right)) && ((object32.top < ycoordinate) && (ycoordinate < object32.bottom))) {
+				if (((scaleCoordinates(object32.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object32.right))) && ((scaleCoordinates(object32.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object32.bottom)))) {
 					return {
 						"name": object32.name,
 						"type": object32.type,
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1255,51 +1470,71 @@
 			if (slide == "s11") {
 
 				object33 = boundaryArr[slide]["F11I1"]
-				if (((object33.left < xcoordinate) && (xcoordinate < object33.right)) && ((object33.top < ycoordinate) && (ycoordinate < object33.bottom))) {
+				if (((scaleCoordinates(object33.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object33.right))) && ((scaleCoordinates(object33.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object33.bottom)))) {
 					return {
 						"name": object33.name,
 						"type": object33.type,
 					}
 				}
 				object34 = boundaryArr[slide]["F11I2"]
-				if (((object34.left < xcoordinate) && (xcoordinate < object34.right)) && ((object34.top < ycoordinate) && (ycoordinate < object34.bottom))) {
+				if (((scaleCoordinates(object34.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object34.right))) && ((scaleCoordinates(object34.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object34.bottom)))) {
 					return {
 						"name": object34.name,
 						"type": object34.type,
 					}
 				}
 				object35 = boundaryArr[slide]["F11I3"]
-				if (((object35.left < xcoordinate) && (xcoordinate < object35.right)) && ((object35.top < ycoordinate) && (ycoordinate < object35.bottom))) {
+				if (((scaleCoordinates(object35.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object35.right))) && ((scaleCoordinates(object35.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object35.bottom)))) {
 					return {
 						"name": object35.name,
 						"type": object35.type,
 					}
 				}
 				object36 = boundaryArr[slide]["F11I4"]
-				if (((object36.left < xcoordinate) && (xcoordinate < object36.right)) && ((object36.top < ycoordinate) && (ycoordinate < object36.bottom))) {
+				if (((scaleCoordinates(object36.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object36.right))) && ((scaleCoordinates(object36.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object36.bottom)))) {
 					return {
 						"name": object36.name,
 						"type": object36.type,
 					}
 				}
 				object37 = boundaryArr[slide]["F11I5"]
-				if (((object37.left < xcoordinate) && (xcoordinate < object37.right)) && ((object37.top < ycoordinate) && (ycoordinate < object37.bottom))) {
+				if (((scaleCoordinates(object37.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object37.right))) && ((scaleCoordinates(object37.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object37.bottom)))) {
 					return {
 						"name": object37.name,
 						"type": object37.type,
 					}
 				}
 				object38 = boundaryArr[slide]["F11I6"]
-				if (((object38.left < xcoordinate) && (xcoordinate < object38.right)) && ((object38.top < ycoordinate) && (ycoordinate < object38.bottom))) {
+				if (((scaleCoordinates(object38.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object38.right))) && ((scaleCoordinates(object38.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object38.bottom)))) {
 					return {
 						"name": object38.name,
 						"type": object38.type,
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1308,102 +1543,142 @@
 
 
 				object39 = boundaryArr[slide]["F12I1"]
-				if (((object39.left < xcoordinate) && (xcoordinate < object39.right)) && ((object39.top < ycoordinate) && (ycoordinate < object39.bottom))) {
+				if (((scaleCoordinates(object39.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object39.right))) && ((scaleCoordinates(object39.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object39.bottom)))) {
 					return {
 						"name": object39.name,
 						"type": object39.type,
 					}
 				}
 				object40 = boundaryArr[slide]["F12I2"]
-				if (((object40.left < xcoordinate) && (xcoordinate < object40.right)) && ((object40.top < ycoordinate) && (ycoordinate < object40.bottom))) {
+				if (((scaleCoordinates(object40.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object40.right))) && ((scaleCoordinates(object40.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object40.bottom)))) {
 					return {
 						"name": object40.name,
 						"type": object40.type,
 					}
 				}
 				object41 = boundaryArr[slide]["F12I3"]
-				if (((object41.left < xcoordinate) && (xcoordinate < object41.right)) && ((object41.top < ycoordinate) && (ycoordinate < object41.bottom))) {
+				if (((scaleCoordinates(object41.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object41.right))) && ((scaleCoordinates(object41.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object41.bottom)))) {
 					return {
 						"name": object41.name,
 						"type": object41.type,
 					}
 				}
 				object42 = boundaryArr[slide]["F12I4"]
-				if (((object42.left < xcoordinate) && (xcoordinate < object42.right)) && ((object42.top < ycoordinate) && (ycoordinate < object42.bottom))) {
+				if (((scaleCoordinates(object42.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object42.right))) && ((scaleCoordinates(object42.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object42.bottom)))) {
 					return {
 						"name": object42.name,
 						"type": object42.type,
 					}
 				}
 				object43 = boundaryArr[slide]["F12I5"]
-				if (((object43.left < xcoordinate) && (xcoordinate < object43.right)) && ((object43.top < ycoordinate) && (ycoordinate < object43.bottom))) {
+				if (((scaleCoordinates(object43.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object43.right))) && ((scaleCoordinates(object43.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object43.bottom)))) {
 					return {
 						"name": object43.name,
 						"type": object43.type,
 					}
 				}
 				object44 = boundaryArr[slide]["F12I6"]
-				if (((object44.left < xcoordinate) && (xcoordinate < object44.right)) && ((object44.top < ycoordinate) && (ycoordinate < object44.bottom))) {
+				if (((scaleCoordinates(object44.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object44.right))) && ((scaleCoordinates(object44.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object44.bottom)))) {
 					return {
 						"name": object44.name,
 						"type": object44.type,
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
 			//slide13
 			if (slide == "s13") {
 				object45 = boundaryArr[slide]["F13I1"]
-				if (((object45.left < xcoordinate) && (xcoordinate < object45.right)) && ((object45.top < ycoordinate) && (ycoordinate < object45.bottom))) {
+				if (((scaleCoordinates(object45.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object45.right))) && ((scaleCoordinates(object45.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object45.bottom)))) {
 					return {
 						"name": object45.name,
 						"type": object45.type,
 					}
 				}
 				object46 = boundaryArr[slide]["F13I2"]
-				if (((object46.left < xcoordinate) && (xcoordinate < object46.right)) && ((object46.top < ycoordinate) && (ycoordinate < object46.bottom))) {
+				if (((scaleCoordinates(object46.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object46.right))) && ((scaleCoordinates(object46.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object46.bottom)))) {
 					return {
 						"name": object46.name,
 						"type": object46.type,
 					}
 				}
 				object47 = boundaryArr[slide]["F13I3"]
-				if (((object47.left < xcoordinate) && (xcoordinate < object47.right)) && ((object47.top < ycoordinate) && (ycoordinate < object47.bottom))) {
+				if (((scaleCoordinates(object47.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object47.right))) && ((scaleCoordinates(object47.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object47.bottom)))) {
 					return {
 						"name": object47.name,
 						"type": object47.type,
 					}
 				}
 				object48 = boundaryArr[slide]["F13I4"]
-				if (((object48.left < xcoordinate) && (xcoordinate < object48.right)) && ((object48.top < ycoordinate) && (ycoordinate < object48.bottom))) {
+				if (((scaleCoordinates(object48.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object48.right))) && ((scaleCoordinates(object48.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object48.bottom)))) {
 					return {
 						"name": object48.name,
 						"type": object48.type,
 					}
 				}
 				object49 = boundaryArr[slide]["F13I5"]
-				if (((object49.left < xcoordinate) && (xcoordinate < object49.right)) && ((object49.top < ycoordinate) && (ycoordinate < object49.bottom))) {
+				if (((scaleCoordinates(object49.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object49.right))) && ((scaleCoordinates(object49.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object49.bottom)))) {
 					return {
 						"name": object49.name,
 						"type": object49.type,
 					}
 				}
 				object50 = boundaryArr[slide]["F13I6"]
-				if (((object50.left < xcoordinate) && (xcoordinate < object50.right)) && ((object50.top < ycoordinate) && (ycoordinate < object50.bottom))) {
+				if (((scaleCoordinates(object50.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object50.right))) && ((scaleCoordinates(object50.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object50.bottom)))) {
 					return {
 						"name": object50.name,
 						"type": object50.type,
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1411,51 +1686,71 @@
 			if (slide == "s14") {
 
 				object51 = boundaryArr[slide]["F14I1"]
-				if (((object51.left < xcoordinate) && (xcoordinate < object51.right)) && ((object51.top < ycoordinate) && (ycoordinate < object51.bottom))) {
+				if (((scaleCoordinates(object51.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object51.right))) && ((scaleCoordinates(object51.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object51.bottom)))) {
 					return {
 						"name": object51.name,
 						"type": object51.type,
 					}
 				}
 				object52 = boundaryArr[slide]["F14I2"]
-				if (((object52.left < xcoordinate) && (xcoordinate < object52.right)) && ((object52.top < ycoordinate) && (ycoordinate < object52.bottom))) {
+				if (((scaleCoordinates(object52.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object52.right))) && ((scaleCoordinates(object52.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object52.bottom)))) {
 					return {
 						"name": object52.name,
 						"type": object52.type,
 					}
 				}
 				object53 = boundaryArr[slide]["F14I3"]
-				if (((object53.left < xcoordinate) && (xcoordinate < object53.right)) && ((object53.top < ycoordinate) && (ycoordinate < object53.bottom))) {
+				if (((scaleCoordinates(object53.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object53.right))) && ((scaleCoordinates(object53.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object53.bottom)))) {
 					return {
 						"name": object53.name,
 						"type": object53.type,
 					}
 				}
 				object54 = boundaryArr[slide]["F14I4"]
-				if (((object54.left < xcoordinate) && (xcoordinate < object54.right)) && ((object54.top < ycoordinate) && (ycoordinate < object54.bottom))) {
+				if (((scaleCoordinates(object54.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object54.right))) && ((scaleCoordinates(object54.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object54.bottom)))) {
 					return {
 						"name": object54.name,
 						"type": object54.type,
 					}
 				}
 				object55 = boundaryArr[slide]["F14I5"]
-				if (((object55.left < xcoordinate) && (xcoordinate < object55.right)) && ((object55.top < ycoordinate) && (ycoordinate < object55.bottom))) {
+				if (((scaleCoordinates(object55.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object55.right))) && ((scaleCoordinates(object55.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object55.bottom)))) {
 					return {
 						"name": object55.name,
 						"type": object55.type,
 					}
 				}
 				object56 = boundaryArr[slide]["F14I6"]
-				if (((object56.left < xcoordinate) && (xcoordinate < object56.right)) && ((object56.top < ycoordinate) && (ycoordinate < object56.bottom))) {
+				if (((scaleCoordinates(object56.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object56.right))) && ((scaleCoordinates(object56.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object56.bottom)))) {
 					return {
 						"name": object56.name,
 						"type": object56.type,
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1463,51 +1758,71 @@
 			if (slide == "s15") {
 
 				object57 = boundaryArr[slide]["F15I1"]
-				if (((object57.left < xcoordinate) && (xcoordinate < object57.right)) && ((object57.top < ycoordinate) && (ycoordinate < object57.bottom))) {
+				if (((scaleCoordinates(object57.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object57.right))) && ((scaleCoordinates(object57.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object57.bottom)))) {
 					return {
 						"name": object57.name,
 						"type": object57.type,
 					}
 				}
 				object58 = boundaryArr[slide]["F15I2"]
-				if (((object58.left < xcoordinate) && (xcoordinate < object58.right)) && ((object58.top < ycoordinate) && (ycoordinate < object58.bottom))) {
+				if (((scaleCoordinates(object58.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object58.right))) && ((scaleCoordinates(object58.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object58.bottom)))) {
 					return {
 						"name": object58.name,
 						"type": object58.type,
 					}
 				}
 				object59 = boundaryArr[slide]["F15I3"]
-				if (((object59.left < xcoordinate) && (xcoordinate < object59.right)) && ((object59.top < ycoordinate) && (ycoordinate < object59.bottom))) {
+				if (((scaleCoordinates(object59.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object59.right))) && ((scaleCoordinates(object59.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object59.bottom)))) {
 					return {
 						"name": object59.name,
 						"type": object59.type,
 					}
 				}
 				object60 = boundaryArr[slide]["F15I4"]
-				if (((object60.left < xcoordinate) && (xcoordinate < object60.right)) && ((object60.top < ycoordinate) && (ycoordinate < object60.bottom))) {
+				if (((scaleCoordinates(object60.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object60.right))) && ((scaleCoordinates(object60.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object60.bottom)))) {
 					return {
 						"name": object60.name,
 						"type": object60.type,
 					}
 				}
 				object61 = boundaryArr[slide]["F15I5"]
-				if (((object61.left < xcoordinate) && (xcoordinate < object61.right)) && ((object61.top < ycoordinate) && (ycoordinate < object61.bottom))) {
+				if (((scaleCoordinates(object61.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object61.right))) && ((scaleCoordinates(object61.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object61.bottom)))) {
 					return {
 						"name": object61.name,
 						"type": object61.type,
 					}
 				}
 				object62 = boundaryArr[slide]["F15I6"]
-				if (((object62.left < xcoordinate) && (xcoordinate < object62.right)) && ((object62.top < ycoordinate) && (ycoordinate < object62.bottom))) {
+				if (((scaleCoordinates(object62.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object62.right))) && ((scaleCoordinates(object62.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object62.bottom)))) {
 					return {
 						"name": object62.name,
 						"type": object62.type,
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1515,51 +1830,71 @@
 			if (slide == "s16") {
 
 				object63 = boundaryArr[slide]["F16I1"]
-				if (((object63.left < xcoordinate) && (xcoordinate < object63.right)) && ((object63.top < ycoordinate) && (ycoordinate < object63.bottom))) {
+				if (((scaleCoordinates(object63.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object63.right))) && ((scaleCoordinates(object63.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object63.bottom)))) {
 					return {
 						"name": object63.name,
 						"type": object63.type,
 					}
 				}
 				object64 = boundaryArr[slide]["F16I2"]
-				if (((object64.left < xcoordinate) && (xcoordinate < object64.right)) && ((object64.top < ycoordinate) && (ycoordinate < object64.bottom))) {
+				if (((scaleCoordinates(object64.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object64.right))) && ((scaleCoordinates(object64.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object64.bottom)))) {
 					return {
 						"name": object64.name,
 						"type": object64.type,
 					}
 				}
 				object65 = boundaryArr[slide]["F16I3"]
-				if (((object65.left < xcoordinate) && (xcoordinate < object65.right)) && ((object65.top < ycoordinate) && (ycoordinate < object65.bottom))) {
+				if (((scaleCoordinates(object65.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object65.right))) && ((scaleCoordinates(object65.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object65.bottom)))) {
 					return {
 						"name": object65.name,
 						"type": object65.type,
 					}
 				}
 				object66 = boundaryArr[slide]["F16I4"]
-				if (((object66.left < xcoordinate) && (xcoordinate < object66.right)) && ((object66.top < ycoordinate) && (ycoordinate < object66.bottom))) {
+				if (((scaleCoordinates(object66.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object66.right))) && ((scaleCoordinates(object66.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object66.bottom)))) {
 					return {
 						"name": object66.name,
 						"type": object66.type,
 					}
 				}
 				object67 = boundaryArr[slide]["F16I5"]
-				if (((object67.left < xcoordinate) && (xcoordinate < object67.right)) && ((object67.top < ycoordinate) && (ycoordinate < object67.bottom))) {
+				if (((scaleCoordinates(object67.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object67.right))) && ((scaleCoordinates(object67.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object67.bottom)))) {
 					return {
 						"name": object67.name,
 						"type": object67.type,
 					}
 				}
 				object68 = boundaryArr[slide]["F16I6"]
-				if (((object68.left < xcoordinate) && (xcoordinate < object68.right)) && ((object68.top < ycoordinate) && (ycoordinate < object68.bottom))) {
+				if (((scaleCoordinates(object68.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object68.right))) && ((scaleCoordinates(object68.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object68.bottom)))) {
 					return {
 						"name": object68.name,
 						"type": object68.type,
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1567,51 +1902,71 @@
 			if (slide == "s17") {
 
 				object69 = boundaryArr[slide]["F17I1"]
-				if (((object69.left < xcoordinate) && (xcoordinate < object69.right)) && ((object69.top < ycoordinate) && (ycoordinate < object69.bottom))) {
+				if (((scaleCoordinates(object69.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object69.right))) && ((scaleCoordinates(object69.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object69.bottom)))) {
 					return {
 						"name": object69.name,
 						"type": object69.type,
 					}
 				}
 				object70 = boundaryArr[slide]["F17I2"]
-				if (((object70.left < xcoordinate) && (xcoordinate < object70.right)) && ((object70.top < ycoordinate) && (ycoordinate < object70.bottom))) {
+				if (((scaleCoordinates(object70.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object70.right))) && ((scaleCoordinates(object70.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object70.bottom)))) {
 					return {
 						"name": object70.name,
 						"type": object70.type,
 					}
 				}
 				object71 = boundaryArr[slide]["F17I3"]
-				if (((object71.left < xcoordinate) && (xcoordinate < object71.right)) && ((object71.top < ycoordinate) && (ycoordinate < object71.bottom))) {
+				if (((scaleCoordinates(object71.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object71.right))) && ((scaleCoordinates(object71.top) < ycoordinate) && (ycoordinate < objescaleCoordinates(ct71.bottom)))) {
 					return {
 						"name": object71.name,
 						"type": object71.type,
 					}
 				}
 				object72 = boundaryArr[slide]["F17I4"]
-				if (((object72.left < xcoordinate) && (xcoordinate < object72.right)) && ((object72.top < ycoordinate) && (ycoordinate < object72.bottom))) {
+				if (((scaleCoordinates(object72.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object72.right))) && ((scaleCoordinates(object72.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object72.bottom)))) {
 					return {
 						"name": object72.name,
 						"type": object72.type,
 					}
 				}
 				object73 = boundaryArr[slide]["F17I5"]
-				if (((object73.left < xcoordinate) && (xcoordinate < object73.right)) && ((object73.top < ycoordinate) && (ycoordinate < object73.bottom))) {
+				if (((scaleCoordinates(object73.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object73.right))) && ((scaleCoordinates(object73.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object73.bottom)))) {
 					return {
 						"name": object73.name,
 						"type": object73.type,
 					}
 				}
 				object74 = boundaryArr[slide]["F17I6"]
-				if (((object74.left < xcoordinate) && (xcoordinate < object74.right)) && ((object74.top < ycoordinate) && (ycoordinate < object74.bottom))) {
+				if (((scaleCoordinates(object74.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object74.right))) && ((scaleCoordinates(object74.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object74.bottom)))) {
 					return {
 						"name": object74.name,
 						"type": object74.type,
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1619,51 +1974,71 @@
 			if (slide == "s18") {
 
 				object75 = boundaryArr[slide]["F18I1"]
-				if (((object75.left < xcoordinate) && (xcoordinate < object75.right)) && ((object75.top < ycoordinate) && (ycoordinate < object75.bottom))) {
+				if (((scaleCoordinates(object75.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object75.right))) && ((scaleCoordinates(object75.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object75.bottom)))) {
 					return {
 						"name": object75.name,
 						"type": object75.type,
 					}
 				}
 				object76 = boundaryArr[slide]["F18I2"]
-				if (((object76.left < xcoordinate) && (xcoordinate < object76.right)) && ((object76.top < ycoordinate) && (ycoordinate < object76.bottom))) {
+				if (((scaleCoordinates(object76.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object76.right))) && ((scaleCoordinates(object76.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object76.bottom)))) {
 					return {
 						"name": object76.name,
 						"type": object76.type,
 					}
 				}
 				object77 = boundaryArr[slide]["F18I3"]
-				if (((object77.left < xcoordinate) && (xcoordinate < object77.right)) && ((object77.top < ycoordinate) && (ycoordinate < object77.bottom))) {
+				if (((scaleCoordinates(object77.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object77.right))) && ((scaleCoordinates(object77.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object77.bottom)))) {
 					return {
 						"name": object77.name,
 						"type": object77.type,
 					}
 				}
 				object78 = boundaryArr[slide]["F18I4"]
-				if (((object78.left < xcoordinate) && (xcoordinate < object78.right)) && ((object78.top < ycoordinate) && (ycoordinate < object78.bottom))) {
+				if (((scaleCoordinates(object78.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object78.right))) && ((scaleCoordinates(object78.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object78.bottom)))) {
 					return {
 						"name": object78.name,
 						"type": object78.type,
 					}
 				}
 				object79 = boundaryArr[slide]["F18I5"]
-				if (((object79.left < xcoordinate) && (xcoordinate < object79.right)) && ((object79.top < ycoordinate) && (ycoordinate < object79.bottom))) {
+				if (((scaleCoordinates(object79.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object79.right))) && ((scaleCoordinates(object79.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object79.bottom)))) {
 					return {
 						"name": object79.name,
 						"type": object79.type,
 					}
 				}
 				object80 = boundaryArr[slide]["F18I6"]
-				if (((object80.left < xcoordinate) && (xcoordinate < object80.right)) && ((object80.top < ycoordinate) && (ycoordinate < object80.bottom))) {
+				if (((scaleCoordinates(object80.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object80.right))) && ((scaleCoordinates(object80.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object80.bottom)))) {
 					return {
 						"name": object80.name,
 						"type": object80.type,
 					}
 				}
 
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 
@@ -1671,50 +2046,70 @@
 			if (slide == "s19") {
 
 				object81 = boundaryArr[slide]["F19I1"]
-				if (((object81.left < xcoordinate) && (xcoordinate < object81.right)) && ((object81.top < ycoordinate) && (ycoordinate < object81.bottom))) {
+				if (((scaleCoordinates(object81.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object81.right))) && ((scaleCoordinates(object81.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object81.bottom)))) {
 					return {
 						"name": object81.name,
 						"type": object81.type,
 					}
 				}
 				object82 = boundaryArr[slide]["F19I2"]
-				if (((object82.left < xcoordinate) && (xcoordinate < object82.right)) && ((object82.top < ycoordinate) && (ycoordinate < object82.bottom))) {
+				if (((scaleCoordinates(object82.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object82.right))) && ((scaleCoordinates(object82.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object82.bottom)))) {
 					return {
 						"name": object82.name,
 						"type": object82.type,
 					}
 				}
 				object83 = boundaryArr[slide]["F19I3"]
-				if (((object83.left < xcoordinate) && (xcoordinate < object83.right)) && ((object83.top < ycoordinate) && (ycoordinate < object83.bottom))) {
+				if (((scaleCoordinates(object83.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object83.right))) && ((scaleCoordinates(object83.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object83.bottom)))) {
 					return {
 						"name": object83.name,
 						"type": object83.type,
 					}
 				}
 				object84 = boundaryArr[slide]["F19I4"]
-				if (((object84.left < xcoordinate) && (xcoordinate < object84.right)) && ((object84.top < ycoordinate) && (ycoordinate < object84.bottom))) {
+				if (((scaleCoordinates(object84.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object84.right))) && ((scaleCoordinates(object84.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object84.bottom)))) {
 					return {
 						"name": object84.name,
 						"type": object84.type,
 					}
 				}
 				object85 = boundaryArr[slide]["F19I5"]
-				if (((object85.left < xcoordinate) && (xcoordinate < object85.right)) && ((object85.top < ycoordinate) && (ycoordinate < object85.bottom))) {
+				if (((scaleCoordinates(object85.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object85.right))) && ((scaleCoordinates(object85.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object85.bottom)))) {
 					return {
 						"name": object85.name,
 						"type": object85.type,
 					}
 				}
 				object86 = boundaryArr[slide]["F19I6"]
-				if (((object86.left < xcoordinate) && (xcoordinate < object86.right)) && ((object86.top < ycoordinate) && (ycoordinate < object86.bottom))) {
+				if (((scaleCoordinates(object86.left) < xcoordinate) && (xcoordinate < scaleCoordinates(object86.right))) && ((scaleCoordinates(object86.top) < ycoordinate) && (ycoordinate < scaleCoordinates(object86.bottom)))) {
 					return {
 						"name": object86.name,
 						"type": object86.type,
 					}
 				}
-				return {
-					"name": "none",
-					"type": "none"
+				if ((xcoordinate < x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate < y_center)) {
+					return {
+						"name": "topright",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate < x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomleft",
+						"type": "none"
+					}
+				}
+				if ((xcoordinate > x_center) && (ycoordinate > y_center)) {
+					return {
+						"name": "bottomright",
+						"type": "none"
+					}
 				}
 			}
 		}
@@ -1724,45 +2119,54 @@
 
 		// var type = "s";
 		var increment = 1;
-		
+
 
 		//function for pause game
 		document.addEventListener('keyup', function (e) {
 			//32 is space bar button ASCII value
-			if(slide=="ch"){
+			if (slide == "ch") {
 				if (e.which === 32) {
-					if(!taskPaused){
+					if (!taskPaused) {
 						pauseTask();
-					}else{
+					} else {
 						resumeTask();
 					}
 					// alert("Game is paused");
-				}else if (e.which === 13 && taskPaused) {
+				} else if (e.which === 13 && taskPaused) {
 					stopTask();
 				}
 			}
 		});
 
-		function pauseTask(){
-			if(!taskPaused){
+		function pauseTask() {
+			if (!taskPaused) {
 				console.log("puased");
 				clearInterval(taskLoop);
 				clearTimeout(tempT)
 				webgazer.pause();
 				taskPaused = true;
+				pausedTime = Date.now();
+				console.log("pausedTime");
+				console.log(pausedTime);
+				console.log("pausedTime");
 			}
 		}
 
-		function resumeTask(){
-			if(taskPaused){
+		function resumeTask() {
+			if (taskPaused) {
 				console.log("resumed");
-				taskLoop = setInterval(showSlide, 7000);
+				startTime = startTime + (Date.now() - pausedTime);
+				console.log("startTime");
+				console.log(startTime);
+				console.log("startTime");
+				taskLoop = setInterval(showSlide, 9000);
 				webgazer.resume();
 				taskPaused = false;
+				
 			}
 		}
 
-		function stopTask(){
+		function stopTask() {
 			console.log("stoped");
 
 			$(".slide").hide();
@@ -1776,13 +2180,14 @@
 
 			//calculate object percentages for each slide
 			calculatePercentArray(arr, percentArr);
-			
-			//showResults(a);
+			calculatePercentArray2(arr, percentArr2);
+
+			//showResults(slideNumber);
 			sendGazeDataToBackend(arr, percentArr);
 
 		}
 
-		function calculatePercentArray(arr, percentArr){
+		function calculatePercentArray(arr, percentArr) {
 			for (let slide in arr) {
 
 				OList = arr[slide].map((x) => {
@@ -1809,43 +2214,65 @@
 			}
 		}
 
-		// function pasuseGame(){
-		// 	clearInterval(interval);
-		// 	isPaused = true;
-		// 	canvas.style.opacity = 0.5;
-		// 	canvascontext.font = "90px tahoma";
-		// 	canvascontext.fillstyle = "white";
-		// 	canvascontext.textAlign = "center";
-		// 	canvascontext.textBaseline = "middle";
-		// 	canvascontext.fillText("Game Paused", 400,250)
-		// }
+		function calculatePercentArray2(arr, percentArr2) {
+			OListAll = [];
+			for (let slide in arr) {
 
-		// function resumeGame(){
-		// 	isPaused = false;
-		// 	canvascontext.clearRect(0, 0, canvas.width, canvas.height);
-		// 	canvas.style.opacity = 1;
-		// 	interval = setInterval(showSlide, 20);
-		// }
+				OList = arr[slide].map((x) => {
+					return x.type
+				})
 
-		// function gameOver(){
-		// 	isGameOver = true;
-		// 	canvas.style.opacity = 0.5;
-		// 	canvascontext.font = "90px tahoma";
-		// 	canvascontext.fillstyle = "white";
-		// 	canvascontext.textAlign = "center";
-		// 	canvascontext.textBaseline = "middle";
-		// 	canvascontext.fillText("Game Over", 400,170);
+				console.log("OList 1")
+				console.log(OList)
+				OListAll = OListAll.concat(OList);
 
+				const count = {};
 
-		// }
+				for (const element of OList) {
+					if (count[element]) {
+						count[element] += 1;
+					} else {
+						count[element] = 1;
+					}
+				}
+
+				var tot = OList.length
+
+				percentArr2[slide] = {}
+				for (let type in count) {
+					percentArr2[slide][type] = 100 * count[type] / tot
+				}
+
+			}
+			const count2 = {};
+			console.log("OListAll 1")
+			console.log(OListAll)
+			for (const element of OListAll) {
+				if (count2[element]) {
+					count2[element] += 1;
+				} else {
+					count2[element] = 1;
+				}
+			}
+
+			console.log("OListAll 2")
+			console.log(OListAll)
+			var tot2 = OListAll.length
+
+			percentArr2["sall"] = {}
+			for (let type in count2) {
+				percentArr2["sall"][type] = 100 * count2[type] / tot2
+			}
+		}
+
 		var tempT;
 
 		function showSlide() {
 			if (increment >= 20) { //end of slides
 
 				stopTask();
-				
-			}else{
+
+			} else {
 
 				$(".slide").hide();
 
@@ -1890,24 +2317,28 @@
 			});
 		}
 
-		var myChart;
-		function showResults(a) {
 
-			var dynamicColors = function () {
-				var r = Math.floor(Math.random() * 255);
-				var g = Math.floor(Math.random() * 255);
-				var b = Math.floor(Math.random() * 255);
-				
-				return "rgb(" + r + "," + g + "," + b + ")";
-				
-			};
-			var slidename = "s" +a;
+		var dynamicColors = function () {
+			var r = Math.floor(Math.random() * 255);
+			var g = Math.floor(Math.random() * 255);
+			var b = Math.floor(Math.random() * 255);
 
-			var labelsArr = Object.getOwnPropertyNames(percentArr[slidename]);
+			return "rgb(" + r + "," + g + "," + b + ")";
+
+		};
+
+		function drawChart(slideNumber, array, chart, canvasName, chartTitle) {
+			$("#" + canvasName).hide();
+
+			var slidename = "s" + slideNumber;
+			if(!array[slidename]){
+				return;
+			}
+			var labelsArr = Object.getOwnPropertyNames(array[slidename]);
 			var valuesArr = [];
 			var colorArr = [];
 			labelsArr.forEach((label) => {
-				valuesArr.push(percentArr[slidename][label]);
+				valuesArr.push(array[slidename][label]);
 				colorArr.push(dynamicColors());
 			})
 
@@ -1915,7 +2346,7 @@
 				labels: labelsArr,
 				datasets: [
 					{
-						label: 'Slide ' + a,
+						label: 'Slide ' + slideNumber,
 						data: valuesArr,
 						backgroundColor: colorArr,
 					}
@@ -1934,18 +2365,67 @@
 						},
 						title: {
 							display: true,
-							text: 'Slide ' + a
+							text: chartTitle
 						}
+					},
+					scales: {
+						xAxes: [{
+							display: true,
+							scaleLabel: {
+								display: true,
+								labelString: 'Month test example'
+							}
+						}],
+						yAxes: [{
+							display: true,
+							scaleLabel: {
+								display: true,
+								labelString: 'Value test example'
+							}
+						}]
 					}
 				},
 			};
-			if(myChart){
-				console.log("AFASFASFASFASFASFSAFSAAFAFASFSAFASFDFAFA");
-				myChart.destroy();
+			if (chart) {
+				chart.destroy();
 			}
-			myChart = new Chart(document.getElementById('myChart'), config);
-			$("#dropdown").show();
+			// console.log("valuesArr")
+			// console.log(valuesArr)
+			// console.log("valuesArr")
+			chart = new Chart(document.getElementById(canvasName), config);
+			if (valuesArr.length>0){
+				$("#" + canvasName).show();
+			}
+
+			return chart;
+		}
+
+		var objectChart;
+		var typeChart;
+		function showResults(slideNumber) {
+			if (slideNumber == "all") {
+				$("#objectChart").hide();
+				if (objectChart) {
+					objectChart.destroy();
+				}
+				if (typeChart) {
+					typeChart.destroy();
+				}
+				typeChart = drawChart(slideNumber, percentArr2, typeChart, 'typeChart', 'Type Percentage - All')
+			} else {
+				$("#objectChart").show()
+				if (objectChart) {
+					objectChart.destroy();
+				}
+				objectChart = drawChart(slideNumber, percentArr, objectChart, 'objectChart', 'Object Percentage')
+				if (typeChart) {
+					typeChart.destroy();
+				}
+				typeChart = drawChart(slideNumber, percentArr2, typeChart, 'typeChart', 'Type Percentage')
+			}
 			$("#resultChart").show();
+			$("#dropdown").show();
+			$("#details").show();
 		}
 
 	</script>
